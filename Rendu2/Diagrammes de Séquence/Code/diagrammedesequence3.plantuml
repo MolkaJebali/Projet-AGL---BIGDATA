@@ -1,0 +1,27 @@
+@startuml 
+
+participant Administrateur
+participant Module
+
+Administrateur -> Module : Demande d'affichage du menu
+Module -> Module : Vérifie l'authentification du client 
+alt Administrateur non authentifié
+    Module --> Administrateur : Demande d'authentification
+    Administrateur -> Administrateur : Authentification
+end 
+Module -> Module : Récupération des données de l'Administrateur
+  loop 
+  Module -> Module : Vérification des données
+  Module --> Administrateur : Options Affichées  
+  alt Ajouter Module
+  Administrateur -> Module : Ajouter Module
+  Module --> Administrateur : Module ajouté
+  else Modifier Module
+  Administrateur -> Module : Modifier Module 
+  Module --> Administrateur : Module modifié
+  else Supprimer Module
+  Administrateur -> Module : Supprimer Module 
+  Module --> Administrateur : Module supprimé
+  end 
+  end
+  @enduml 

@@ -1,0 +1,27 @@
+@startuml 
+
+participant Client 
+participant Module
+participant Quizz
+
+Client -> Module : Demande d'affichage du menu
+Module -> Module : Vérifie l'authentification du client 
+alt Client non authentifié
+    Module --> Client : Demande d'authentification
+    Client -> Client : Authentification
+end 
+Module -> Module : Récupération des données du niveau actuel du client
+  loop 
+  Module -> Module : Vérification du niveau actuel du client  
+  Module --> Client : Options Affichées  
+  alt Compléter Module
+  Client -> Module : Compléter Module
+  Module --> Client : Module Complété
+  Client -> Quizz : Passer Quizz
+  Quizz --> Client : Quizz passé
+  else Parcourir Module
+  Client -> Module : Parcourir Module 
+  Module --> Client : Module parcouru
+  end 
+  end
+  @enduml  

@@ -1,0 +1,53 @@
+@startuml
+left to right direction
+skinparam packageStyle rect
+rectangle "BigData Learning" {
+    'Creating actors
+    actor Client
+    actor Administrateur
+    
+     
+    Utilisateur <|-- Client 
+    Utilisateur <|-- Administrateur
+    
+    'Creating use cases of Client
+    Client --down- (S'inscrire)
+    Client --down- (Parcourir les modules)
+    Client --down- (Compléter les modules)
+    Client --down- (Visualiser des animations)
+    Client --down- (Consulter la Progression)
+    Client --down- (Participer au Forum)
+
+    'Creating use cases of Administrateur
+    Administrateur --down- (Gérer les modules)
+    Administrateur --down- (Gérer les comptes utilisateurs)
+    Administrateur --down- (Modérer le Forum)
+
+    (S'inscrire) ..> (Gérer les paramètres de confidentialité): includes
+    (S'inscrire) ..> (Authentification): includes
+    (Ajouter Utilisateur) ..> (Authentification): includes
+    (Modifier Utilisateur) ..> (Authentification): includes
+    (Supprimer Utilisateur) ..> (Passer un Quizz): extends
+    (Ajouter Module) ..> (Authentification): includes
+    (Modifier Module) ..> (Authentification): includes
+    (Supprimer Utilisateur) ..> (Authentification): includes
+    (Participer au Forum) ..> (Authentification): includes
+    (Consulter la Progression) ..> (Authentification): includes
+    (Visualiser des animations) ..> (Authentification): includes
+    (Compléter les modules) ..> (Authentification): includes
+    (Parcourir les modules) ..> (Authentification): includes
+
+
+    (Supprimer Module) ..> (Authentification): includes
+    (Gérer les modules) --|> (Ajouter Module)
+    (Gérer les modules) --|> (Modifier Module)
+    (Gérer les modules) --|> (Supprimer Module)
+
+    
+    (Gérer les comptes utilisateurs) --|> (Ajouter Utilisateur)
+    (Gérer les comptes utilisateurs) --|> (Modifier Utilisateur)
+    (Gérer les comptes utilisateurs) --|> (Supprimer Utilisateur)
+
+    (Modérer le Forum) ..> (Authentification): includes
+}
+@enduml

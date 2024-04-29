@@ -1,0 +1,53 @@
+@startuml DiagrammeDeClasse1
+
+class Utilisateur { 
+    +Nom : string 
+    +Email : string 
+    +MDP : string 
+}
+class Client extends Utilisateur {
+    +idClient : integer 
+}
+class Administrateur extends Utilisateur {
+    +idAdmin : integer 
+
+}
+class Video extends Animation {
+    +DuréeVidéoFilm : integer
+}
+class Audio extends Animation {
+    +Classification : string
+}
+
+class Module {
+    +id : integer
+    +Titre:string
+    +Description : string
+
+}
+class Forum {
+    +id : integer
+    +Titre:string
+    +Description : string
+}
+class Animation {
+    +id : integer
+    +Titre:string
+    +Description : string 
+    +URL:string
+}
+class Quizz  {
+    +id : integer
+    +Titre:string
+    +module : Module
+}
+class Niveau {
+    +idClient : integer 
+}
+Client "+1" --> "+1..*" Niveau : posséde
+Administrateur "+1" --> "+*" Module : gérer
+Client "+*" --> "+*" Module : suivre
+Client "+*" --> "+*" Forum : voir
+Client "+*" --> "+*" Animation : voir
+Module "+*" --> "+*" Quizz : Avoir  
+@enduml

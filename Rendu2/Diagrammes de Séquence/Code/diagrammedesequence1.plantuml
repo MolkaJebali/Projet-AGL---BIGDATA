@@ -1,0 +1,21 @@
+@startuml 
+
+Participant Client  
+Participant Forum 
+Client -> Forum : Demande de participation au Forum
+Forum -> Forum : Vérifie l'authentification de l'utilisateur 
+ alt Utilisateur non authentifié 
+      Forum --> Client: Demande d'authentification 
+      Client -> Client : Authentification
+      end 
+
+    Forum -> Forum : Récupération des données du niveau declient 
+     loop 
+      Forum -> Forum : Vérification des données du niveau de client
+      alt Client Accepté 
+          Forum --> Client : Demande de participation acceptée 
+          else Client non Connecté 
+          Forum --> Client : Demande de participation non acceptée 
+          end
+          end
+          @enduml 

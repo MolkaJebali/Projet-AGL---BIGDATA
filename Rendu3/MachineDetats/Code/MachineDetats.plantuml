@@ -1,0 +1,16 @@
+@startuml 
+[*] --> NonConnecté 
+
+  NonConnecté --> Authentification
+  Authentification --> Connecté : Identifiants valides
+  Authentification --> NonConnecté : Identifiants invalides
+
+
+state Connecté {
+  [*] --> MenuClient : Client Connecté
+  [*] --> MenuAdministrateur : Administrateur Connecté
+}
+
+NonConnecté --> [*] : Quitter
+Connecté --> [*] : Retour
+@enduml

@@ -1,0 +1,76 @@
+@startuml DiagrammeDeClasse1
+ 
+class Utilisateur { 
+    +Nom : string 
+    +Email : string 
+    +MDP : string 
+    +Constructeur()
+}
+class Client extends Utilisateur {
+    +idClient : integer 
+    +S'authentifier()
+    +ParcourirModules()
+    +CompleterModule()
+    +ParticiperForum()
+    +VisualiserAnimation()
+    +PasserQuizz()
+    +ConsulterProgression()
+    +Constructeur()
+}
+class Administrateur extends Utilisateur {
+    +idAdmin : integer 
+    +S'authentifier()
+    +GererClients()
+    +AjouterModule()
+    +ModifierModule()
+    +ModereForum()
+    +Constructeur()
+
+}
+class Video extends Animation {
+    +DuréeVidéoFilm : integer
+    +Constructeur()
+
+}
+class Audio extends Animation {
+    +Classification : string
+    +Constructeur()
+
+}
+
+class Module {
+    +id : integer
+    +Titre:string
+    +Description : string
+    +Constructeur()
+}
+class Forum {
+    +id : integer
+    +Titre:string
+    +Description : string
+    +Constructeur()
+}
+class Animation {
+    +id : integer
+    +Titre:string
+    +Description : string 
+    +URL:string
+    +Constructeur()
+}
+class Quiz {
+    +id : integer
+    +Titre:string
+    +module : Module
+    +Constructeur()
+}
+ class Niveau {
+    +idUtilisateur : integer 
+    +Constructeur()
+}
+Client "+*" *-- "+1..*" Niveau : posséde
+Administrateur "+1" --> "+*" Module : gérer
+Client "+*" --> "+*" Module : suivre
+Client "+*" --> "+*" Forum : voir
+Client "+*" --> "+*" Animation : voir  
+Module "+*" *-- "+*" Quiz: Avoir 
+@enduml
