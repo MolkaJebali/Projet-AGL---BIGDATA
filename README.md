@@ -44,7 +44,8 @@ Les contributions et les commentaires sont les bienvenus ! Si vous avez des idé
  ____________________________________________________________________________________________________
 ## Conception :
 
-![Diagramme de cas d'utilisation](https://github.com/MolkaJebali/Projet-AGL---BIGDATA/assets/162985207/28d85068-9b77-4fa4-8105-d32f5928342a)
+![usecase](https://github.com/MolkaJebali/Projet-AGL---BIGDATA/assets/162985207/ddb6a8db-b72e-4637-b021-89e8573e79fd)
+
 
 
  ____________________________________________________________________________________________________
